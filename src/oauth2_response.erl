@@ -44,7 +44,7 @@
 -export([token_type/1]).
 -export([to_proplist/1]).
 -ifndef(pre17).
--export([to_map/1]).
+%%%-export([to_map/1]).
 -endif.
 
 -export_type([response/0]).
@@ -171,9 +171,9 @@ to_proplist(Response) ->
     response_foldr(Response, fun(Key, Value, Acc) -> [{Key, Value} | Acc] end, []).
 
 -ifndef(pre17).
--spec to_map(response()) -> map(binary(), any()).
-to_map(Response) ->
-    response_foldr(Response, fun(Key, Value, Acc) -> maps:put(Key, Value, Acc) end, maps:new()).
+%%%-spec to_map(response()) -> map(binary(), any()).
+%%%to_map(Response) ->
+%%%    response_foldr(Response, fun(Key, Value, Acc) -> maps:put(Key, Value, Acc) end, maps:new()).
 -endif.
 
 %%%_* Private functions ================================================
